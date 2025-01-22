@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { User, Admin, UserOrAdmin } from '../user-input.model';
+import { UserOrAdmin } from '../user-input.model';
 @Component({
   selector: 'app-user-table',
   standalone: true,

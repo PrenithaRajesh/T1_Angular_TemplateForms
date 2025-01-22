@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { UserTableComponent } from './user-table/user-table.component';
 import { UserInputComponent } from './user-input/user-input.component';
-import { User, Admin, UserOrAdmin } from './user-input.model';
+import { UserOrAdmin } from './user-input.model';
 import { DUMMY_USERS } from './dummy-users';
 @Component({
   selector: 'app-root',
@@ -14,7 +14,8 @@ import { DUMMY_USERS } from './dummy-users';
 export class AppComponent {
   users: UserOrAdmin[] = DUMMY_USERS;
 
-  onFormSubmit(user: User | Admin) {
+  onFormSubmit(user: UserOrAdmin) {
     console.log(user);
+    this.users.push(user);
   }
 }

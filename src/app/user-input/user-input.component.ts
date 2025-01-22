@@ -71,8 +71,11 @@ export class UserInputComponent {
     return this.userInput as Admin;
   }
 
-  onSubmit() {
+  onSubmit(event: Event) {
+    // event.preventDefault(): Stops the form's default action (reloading the page).
+    // event.stopPropagation(): Ensures the event doesn't propagate to parent elements.
+    event.preventDefault(); 
+    event.stopPropagation();
     this.submit.emit(this.userInput);
-    console.log(this.userInput);
   }
 }
