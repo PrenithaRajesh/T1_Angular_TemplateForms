@@ -1,3 +1,5 @@
 <app-header />
 
-<app-user-table />
+<app-user-table [users]="users"/>
+
+<app-user-input selectedForm="user" (submit)="onFormSubmit($event)"/>

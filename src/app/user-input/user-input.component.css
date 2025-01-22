@@ -1,0 +1,46 @@
+#user-input{
+    margin: 1rem;
+    background-color: #f8f9fa;
+    box-shadow: 0 1px 4px rgba(20,20,76,0.4);
+    padding: 1rem;
+}
+
+#user-input .input-element{
+    margin: 1rem;
+}
+
+#user-input label{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+#user-input input{
+    padding: 0.5rem;
+    border: 1px solid #f0f0f0;
+    width: 100%;
+    margin-top: 0.5rem; 
+}
+
+#user-input .buttons{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+#user-input button{
+    padding: 0.5rem 1rem;
+    background-color: #14144c;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#user-input button:hover{
+    background-color: #243b7b;
+}
+
+#user-input button:disabled{
+    background-color: #f0f0f0;
+    color: #727171;
+    cursor: not-allowed;
+}

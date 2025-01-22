@@ -1,0 +1,111 @@
+<div id="user-input">
+    <form (ngSubmit)="onSubmit()">
+        <div class="input-element">
+            <label for="id">Id</label>
+            <input type="text" id="id" name="id" [(ngModel)]="userInput.id" required>
+        </div>
+
+        <div class="input-element">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" [(ngModel)]="userInput.name" required>
+        </div>
+
+        <div class="input-element">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" [(ngModel)]="userInput.email" required>
+        </div>
+
+        <div class="input-element">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" [(ngModel)]="userInput.phone" pattern="[0-9]{10}" required>
+        </div>
+
+        <div class="input-element">
+            <label for="gender">Gender</label>
+            <select name="gender" id="gender" [(ngModel)]="userInput.gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <div class="input-element">
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" name="dob" [(ngModel)]="userInput.dateOfBirth" required>
+        </div>
+
+        <div class="input-element">
+            <fieldset>
+                <legend>Address</legend>
+
+                <label for="Street">Street</label>
+                <input type="text" id="Street" name="Street" [(ngModel)]="userInput.address.street" required>
+
+                <label for="City">City</label>
+                <input type="text" id="City" name="City" [(ngModel)]="userInput.address.city" required>
+
+                <label for="State">State</label>
+                <input type="text" id="State" name="State" [(ngModel)]="userInput.address.state" required>
+
+                <label for="Country">ZipCode</label>
+                <input type="text" id="ZipCode" name="ZipCode" [(ngModel)]="userInput.address.zip" required>
+            </fieldset>
+        </div>
+
+        <div *ngIf="selectedForm === 'user'">
+            <div class="input-element">
+                <label for="userType">User Type</label>
+                <select name="userType" id="userType" [(ngModel)]="isUser.userType" required>
+                    <option value="individual">Individual</option>
+                    <option value="organization">Organization</option>
+                </select>
+            </div>
+
+            <div class="input-element">
+                <label>Preferred Languages</label>
+                <input type="checkbox" id="english" name="english" [(ngModel)]="isUser.preferredLanguage.english">
+                <label for="english">English</label>
+
+                <input type="checkbox" id="hindi" name="hindi" [(ngModel)]="isUser.preferredLanguage.hindi">
+                <label for="hindi">Hindi</label>
+
+                <input type="checkbox" id="kannada" name="kannada" [(ngModel)]="isUser.preferredLanguage.kannada">
+                <label for="kannada">Kannada</label>
+
+                <input type="checkbox" id="tamil" name="tamil" [(ngModel)]="isUser.preferredLanguage.tamil">
+                <label for="tamil">Tamil</label>
+            </div>
+        </div>
+
+        <div *ngIf="selectedForm === 'admin'">
+            <div class="input-element">
+                <label for="permissions">Permissions</label>
+                <input type="checkbox" id="read" name="read" [(ngModel)]="isAdmin.permissions.read">
+                <label for="create">Read</label>
+
+                <input type="checkbox" id="write" name="write" [(ngModel)]="isAdmin.permissions.write">
+                <label for="read">Write</label>
+
+                <input type="checkbox" id="edit" name="edit" [(ngModel)]="isAdmin.permissions.edit">
+                <label for="update">Edit</label>
+
+                <input type="checkbox" id="delete" name="delete" [(ngModel)]="isAdmin.permissions.delete">
+                <label for="delete">Delete</label>
+            </div>
+
+            <div class="input-element">
+                <label for="admin-notes">Admin Notes</label>
+                <textarea id="admin-notes" name="admin-notes" [(ngModel)]="isAdmin.adminNotes"></textarea>
+            </div>
+        </div>
+
+        <input type="checkbox" id="agree" name="agree" [(ngModel)]="userInput.agreeToTerms" required>
+        <label for="agree">I agree to the terms and conditions</label>
+
+        <div class="buttons">
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+            <button type="button" disabled>Edit</button>
+        </div>
+    </form>
+</div>

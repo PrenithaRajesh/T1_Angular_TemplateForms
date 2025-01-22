@@ -1,8 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { DUMMY_USERS } from './dummy-users';
-
+import { User, Admin, UserOrAdmin } from '../user-input.model';
 @Component({
   selector: 'app-user-table',
   standalone: true,
@@ -11,5 +9,5 @@ import { DUMMY_USERS } from './dummy-users';
   styleUrl: './user-table.component.css'
 })
 export class UserTableComponent {
-  users = DUMMY_USERS;
+  @Input() users!: UserOrAdmin[];
 }

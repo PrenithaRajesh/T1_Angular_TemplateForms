@@ -1,12 +1,20 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { UserTableComponent } from './user-table/user-table.component';
-
+import { UserInputComponent } from './user-input/user-input.component';
+import { User, Admin, UserOrAdmin } from './user-input.model';
+import { DUMMY_USERS } from './dummy-users';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HeaderComponent, UserTableComponent],
+  imports: [HeaderComponent, UserTableComponent, UserInputComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {}
+export class AppComponent {
+  users: UserOrAdmin[] = DUMMY_USERS;
+
+  onFormSubmit(user: User | Admin) {
+    console.log(user);
+  }
+}
