@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { User, Admin } from '../user-input.model';
 import { CommonModule } from '@angular/common';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user-input',
@@ -13,7 +14,7 @@ import { CommonModule } from '@angular/common';
 export class UserInputComponent {
   @Input({required: true}) selectedForm: string = 'user';
 
-  @Output() submit = new EventEmitter<User | Admin>();
+  constructor(private userService: UserService) {}
 
   userInput: User | Admin = this.selectedForm === 'user' ? {
     id: '',
@@ -76,6 +77,12 @@ export class UserInputComponent {
     // event.stopPropagation(): Ensures the event doesn't propagate to parent elements.
     event.preventDefault(); 
     event.stopPropagation();
-    this.submit.emit(this.userInput);
+    if(this.userService.validateUser(this.userInput)){
+      this.userService.createUser(this.userInput);
+    }
+    // TODO: ADD STYLE TO SHOW ERROR MESSAGE
+    else{
+      console.log("User validation failed");
+    }
   }
 }

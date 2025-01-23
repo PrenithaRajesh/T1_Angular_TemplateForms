@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserOrAdmin } from '../user-input.model';
+import { UserService } from '../user.service';
 @Component({
   selector: 'app-user-table',
   standalone: true,
@@ -9,5 +9,6 @@ import { UserOrAdmin } from '../user-input.model';
   styleUrl: './user-table.component.css'
 })
 export class UserTableComponent {
-  @Input() users!: UserOrAdmin[];
+  constructor(private userService: UserService) {}
+  users = this.userService.readUser();
 }
