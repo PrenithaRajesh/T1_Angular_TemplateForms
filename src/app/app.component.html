@@ -2,6 +2,6 @@
 
 <app-user-table />
 
-<app-user-tab />
+<app-user-tab (tabChange)="onSelectedTabChange($event)"/>
 
-<app-user-input selectedForm="user" />
+<app-user-input [selectedForm]="selectedUser" />

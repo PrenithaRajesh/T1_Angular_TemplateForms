@@ -14,4 +14,13 @@ import { UserTabComponent } from "./user-tab/user-tab.component";
 })
 export class AppComponent {
   constructor(private userService: UserService) {}
+
+  get selectedUser(){
+    return this.userService.selectedUser;
+  }
+
+  onSelectedTabChange(tab: "user" | "admin") {
+    this.userService.selectedUser = tab;
+    console.log("Selected tab: "+tab);
+  }
 }

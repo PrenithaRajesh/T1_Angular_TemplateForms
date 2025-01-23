@@ -6,6 +6,8 @@ import { UserOrAdmin } from './user-input.model';
 export class UserService {
   users: UserOrAdmin[] = DUMMY_USERS;
 
+  selectedUser: "user" | "admin" = 'user';
+
   createUser(user: UserOrAdmin) {
     this.users.push(user);
   }
