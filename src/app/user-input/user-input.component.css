@@ -1,46 +1,134 @@
-#user-input{
-    margin: 1rem;
-    background-color: #f8f9fa;
-    box-shadow: 0 1px 4px rgba(20,20,76,0.4);
-    padding: 1rem;
+#user-input {
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 900px;
+    font-family: Arial, sans-serif;
 }
 
-#user-input .input-element{
-    margin: 1rem;
-}
-
-#user-input label{
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-#user-input input{
-    padding: 0.5rem;
-    border: 1px solid #f0f0f0;
-    width: 100%;
-    margin-top: 0.5rem; 
-}
-
-#user-input .buttons{
+#user-input .input-element {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+
+#user-input label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+#user-input input, 
+#user-input select, 
+#user-input textarea {
+    padding: 0.7rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#user-input input:focus, 
+#user-input select:focus, 
+#user-input textarea:focus {
+    border-color: #0056b3;
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 86, 179, 0.3);
+}
+
+#user-input .row {
+    display: flex;
     gap: 1rem;
 }
 
-#user-input button{
-    padding: 0.5rem 1rem;
-    background-color: #14144c;
-    color: #fff;
+#user-input .row .input-element {
+    flex: 1;
+}
+
+#user-input .buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+#user-input button {
+    padding: 0.7rem 1.5rem;
+    background-color: #0056b3;
+    color: #ffffff;
     border: none;
+    border-radius: 4px;
+    font-size: 1rem;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-#user-input button:hover{
-    background-color: #243b7b;
+#user-input button:hover {
+    background-color: #003d80;
 }
 
-#user-input button:disabled{
-    background-color: #f0f0f0;
-    color: #727171;
+#user-input button:disabled {
+    background-color: #ccc;
+    color: #666;
     cursor: not-allowed;
+}
+
+#user-input fieldset {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+}
+
+#user-input fieldset legend {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+/* Adjustments for better layout with multiple elements */
+#user-input .input-element.inline {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#user-input .input-element.inline label {
+    flex: 0 0 150px;
+    margin: 0;
+}
+
+#user-input .input-element.inline input {
+    flex: 1;
+}
+
+#user-input .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+#user-input .checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 400;
+}
+
+@media (max-width: 768px) {
+    #user-input {
+        padding: 1rem;
+    }
+
+    #user-input .row {
+        flex-direction: column;
+    }
+
+    #user-input button {
+        width: 100%;
+    }
 }
