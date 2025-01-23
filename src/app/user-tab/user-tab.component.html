@@ -1,6 +1,6 @@
 <div class="tab-area">
     <div class="tab">
-        <button class="tablink" (click)="onTabChange('user')">User</button>
-        <button class="tablink" (click)="onTabChange('admin')">Admin</button>
+        <button class="tablink" (click)="onTabChange('user')" [class.active]="selectedTab==='user'">User</button>
+        <button class="tablink" (click)="onTabChange('admin')" [class.active]="selectedTab==='admin'">Admin</button>
     </div>
 </div>

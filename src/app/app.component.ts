@@ -18,9 +18,4 @@ export class AppComponent {
   get selectedUser(){
     return this.userService.selectedUser;
   }
-
-  onSelectedTabChange(tab: "user" | "admin") {
-    this.userService.selectedUser = tab;
-    console.log("Selected tab: "+tab);
-  }
 }

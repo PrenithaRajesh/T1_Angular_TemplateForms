@@ -1,4 +1,5 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user-tab',
@@ -10,11 +11,13 @@ import { Component, Output, EventEmitter } from '@angular/core';
 export class UserTabComponent {
   selectedTab: "user" | "admin" = 'user';
 
-  @Output() tabChange = new EventEmitter<"user" | "admin">();
+  // @Output() tabChange = new EventEmitter<"user" | "admin">();
+
+  constructor(private userService: UserService) {}
 
   onTabChange(tab: "user" | "admin") {
     this.selectedTab = tab;
-    console.log("Emitting tab: "+tab);
-    this.tabChange.emit(tab);
+    this.userService.selectedUser = tab;
+    // this.tabChange.emit(tab);
   }
 }
