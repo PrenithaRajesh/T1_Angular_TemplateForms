@@ -28,7 +28,6 @@
     background-color: #e4e2e2; 
 }
 
-/* TODO: ADD CSS FOR SELECTED CLASS */
 .tablink.active{
     background-color: #243b7b;
     color: white;
