@@ -1,0 +1,6 @@
+<div>
+    <p *ngIf="logs.length > 0">The reason your form is not submitted is</p>
+    <ol>
+        <li *ngFor="let log of logs">{{ log.message }}</li>
+    </ol>
+</div>

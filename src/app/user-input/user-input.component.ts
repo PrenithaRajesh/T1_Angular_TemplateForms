@@ -8,20 +8,23 @@ import { UserService } from '../user.service';
   styleUrls: ['./user-input.component.css'],
 })
 export class UserInputComponent implements OnInit, OnChanges {
-  @Input() selectedForm: string = 'user'; // Default to 'user' form
+  @Input() selectedForm: string = 'user'; 
 
   userInput!: UserOrAdmin;
+
+  formLogs : {
+    condition: boolean;
+    message: string;
+  }[] = [];
 
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    // Initialize the form based on the default selectedForm
     this.initializeForm();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['selectedForm'] && !changes['selectedForm'].firstChange) {
-      // Reinitialize the form if selectedForm changes dynamically
       this.initializeForm();
     }
   }
@@ -89,11 +92,13 @@ export class UserInputComponent implements OnInit, OnChanges {
   }
 
   onSubmit(): void {
-    if (this.userService.validateUser(this.userInput)) {
+    this.formLogs = this.userService.validateUser(this.userInput);
+    if (this.formLogs.length === 0) {
       this.userService.createUser(this.userInput);
-      console.log('User successfully created:', this.userInput);
+      alert(this.userInput.type+' created successfully');
     } else {
-      console.error('User validation failed:', this.userInput);
+      console.log('Form validation failed');
+      console.log(this.formLogs);
     }
   }
 }

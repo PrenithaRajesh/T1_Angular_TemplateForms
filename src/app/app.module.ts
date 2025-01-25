@@ -4,23 +4,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { UserInputComponent } from './user-input/user-input.component';
 import { UserTableComponent } from './user-table/user-table.component';
 import { UserTabComponent } from './user-tab/user-tab.component';
-import { FormsModule } from '@angular/forms';
+
+import { UserInputModule } from './user-input/user-input.module'
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    UserInputComponent,
     UserTableComponent,
-    UserTabComponent
+    UserTabComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
+    UserInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
