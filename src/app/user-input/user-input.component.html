@@ -1,5 +1,5 @@
 <div id="user-input">
-    <form (ngSubmit)="onSubmit($event)">
+    <form (ngSubmit)="onSubmit()">
         <div class="input-element">
             <label for="id">Id</label>
             <input type="text" id="id" name="id" [(ngModel)]="userInput.id" required>
@@ -55,7 +55,7 @@
         <div *ngIf="selectedForm === 'user'">
             <div class="input-element">
                 <label for="userType">User Type</label>
-                <select name="userType" id="userType" [(ngModel)]="isUser.userType" required>
+                <select name="userType" id="userType" [(ngModel)]="asUser.userType" required>
                     <option value="individual">Individual</option>
                     <option value="organization">Organization</option>
                 </select>
@@ -63,16 +63,16 @@
 
             <div class="input-element">
                 <label>Preferred Languages</label>
-                <input type="checkbox" id="english" name="english" [(ngModel)]="isUser.preferredLanguage.english">
+                <input type="checkbox" id="english" name="english" [(ngModel)]="asUser.preferredLanguage.english">
                 <label for="english">English</label>
 
-                <input type="checkbox" id="hindi" name="hindi" [(ngModel)]="isUser.preferredLanguage.hindi">
+                <input type="checkbox" id="hindi" name="hindi" [(ngModel)]="asUser.preferredLanguage.hindi">
                 <label for="hindi">Hindi</label>
 
-                <input type="checkbox" id="kannada" name="kannada" [(ngModel)]="isUser.preferredLanguage.kannada">
+                <input type="checkbox" id="kannada" name="kannada" [(ngModel)]="asUser.preferredLanguage.kannada">
                 <label for="kannada">Kannada</label>
 
-                <input type="checkbox" id="tamil" name="tamil" [(ngModel)]="isUser.preferredLanguage.tamil">
+                <input type="checkbox" id="tamil" name="tamil" [(ngModel)]="asUser.preferredLanguage.tamil">
                 <label for="tamil">Tamil</label>
             </div>
         </div>
@@ -80,22 +80,22 @@
         <div *ngIf="selectedForm === 'admin'">
             <div class="input-element">
                 <label for="permissions">Permissions</label>
-                <input type="checkbox" id="read" name="read" [(ngModel)]="isAdmin.permissions.read">
+                <input type="checkbox" id="read" name="read" [(ngModel)]="asAdmin.permissions.read">
                 <label for="read">Read</label>
 
-                <input type="checkbox" id="write" name="write" [(ngModel)]="isAdmin.permissions.write">
+                <input type="checkbox" id="write" name="write" [(ngModel)]="asAdmin.permissions.write">
                 <label for="write">Write</label>
 
-                <input type="checkbox" id="edit" name="edit" [(ngModel)]="isAdmin.permissions.edit">
+                <input type="checkbox" id="edit" name="edit" [(ngModel)]="asAdmin.permissions.edit">
                 <label for="update">Edit</label>
 
-                <input type="checkbox" id="delete" name="delete" [(ngModel)]="isAdmin.permissions.delete">
+                <input type="checkbox" id="delete" name="delete" [(ngModel)]="asAdmin.permissions.delete">
                 <label for="delete">Delete</label>
             </div>
 
             <div class="input-element">
                 <label for="admin-notes">Admin Notes</label>
-                <textarea id="admin-notes" name="admin-notes" [(ngModel)]="isAdmin.adminNotes"></textarea>
+                <textarea id="admin-notes" name="admin-notes" [(ngModel)]="asAdmin.adminNotes"></textarea>
             </div>
         </div>
 
