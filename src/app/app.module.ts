@@ -8,7 +8,6 @@ import { UserInputComponent } from './user-input/user-input.component';
 import { UserTableComponent } from './user-table/user-table.component';
 import { UserTabComponent } from './user-tab/user-tab.component';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [

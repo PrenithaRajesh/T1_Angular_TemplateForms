@@ -2,27 +2,27 @@
     <form (ngSubmit)="onSubmit()">
         <div class="input-element">
             <label for="id">Id</label>
-            <input type="text" id="id" name="id" [(ngModel)]="userInput.id" required>
+            <input type="text" id="id" name="id" [(ngModel)]="userInput.id" >
         </div>
 
         <div class="input-element">
             <label for="name">Name</label>
-            <input type="text" id="name" name="name" [(ngModel)]="userInput.name" required>
+            <input type="text" id="name" name="name" [(ngModel)]="userInput.name" >
         </div>
 
         <div class="input-element">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" [(ngModel)]="userInput.email" required>
+            <input type="email" id="email" name="email" [(ngModel)]="userInput.email" >
         </div>
 
         <div class="input-element">
             <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" [(ngModel)]="userInput.phone" pattern="[0-9]{10}" required>
+            <input type="tel" id="phone" name="phone" [(ngModel)]="userInput.phone" pattern="[0-9]{10}" >
         </div>
 
         <div class="input-element">
             <label for="gender">Gender</label>
-            <select name="gender" id="gender" [(ngModel)]="userInput.gender" required>
+            <select name="gender" id="gender" [(ngModel)]="userInput.gender" >
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="other">Other</option>
@@ -31,7 +31,7 @@
 
         <div class="input-element">
             <label for="dob">Date of Birth</label>
-            <input type="date" id="dob" name="dob" [(ngModel)]="userInput.dateOfBirth" required>
+            <input type="date" id="dob" name="dob" [(ngModel)]="userInput.dateOfBirth" >
         </div>
 
         <div class="input-element">
@@ -39,41 +39,52 @@
                 <legend>Address</legend>
 
                 <label for="Street">Street</label>
-                <input type="text" id="Street" name="Street" [(ngModel)]="userInput.address.street" required>
+                <input type="text" id="Street" name="Street" [(ngModel)]="userInput.address.street" >
 
                 <label for="City">City</label>
-                <input type="text" id="City" name="City" [(ngModel)]="userInput.address.city" required>
+                <input type="text" id="City" name="City" [(ngModel)]="userInput.address.city" >
 
                 <label for="State">State</label>
-                <input type="text" id="State" name="State" [(ngModel)]="userInput.address.state" required>
+                <input type="text" id="State" name="State" [(ngModel)]="userInput.address.state" >
 
                 <label for="Country">ZipCode</label>
-                <input type="text" id="ZipCode" name="ZipCode" [(ngModel)]="userInput.address.zip" required>
+                <input type="text" id="ZipCode" name="ZipCode" [(ngModel)]="userInput.address.zip" >
             </fieldset>
         </div>
 
         <div *ngIf="selectedForm === 'user'">
-            <div class="input-element">
-                <label for="userType">User Type</label>
-                <select name="userType" id="userType" [(ngModel)]="asUser.userType" required>
-                    <option value="individual">Individual</option>
-                    <option value="organization">Organization</option>
-                </select>
-            </div>
+            <div class="input-element3">
+                <p>User Type</p>
+                <div class="radio-group">
+                    <input type="radio" id="individual" name="userType" value="individual" [(ngModel)]="asUser.userType" >
+                    <label for="individual">Individual</label>
+            
+                    <input type="radio" id="organization" name="userType" value="organization" [(ngModel)]="asUser.userType" >
+                    <label for="organization">Organization</label>
+                </div>
+            </div>            
 
-            <div class="input-element">
-                <label>Preferred Languages</label>
-                <input type="checkbox" id="english" name="english" [(ngModel)]="asUser.preferredLanguage.english">
-                <label for="english">English</label>
+            <div class="input-element2">
+                <p>Preferred Languages</p>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="english" name="english" [(ngModel)]="asUser.preferredLanguage.english">
+                    <label for="english">English</label>
+                </div>
 
-                <input type="checkbox" id="hindi" name="hindi" [(ngModel)]="asUser.preferredLanguage.hindi">
-                <label for="hindi">Hindi</label>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="hindi" name="hindi" [(ngModel)]="asUser.preferredLanguage.hindi">
+                    <label for="hindi">Hindi</label>
+                </div>
 
-                <input type="checkbox" id="kannada" name="kannada" [(ngModel)]="asUser.preferredLanguage.kannada">
-                <label for="kannada">Kannada</label>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="kannada" name="kannada" [(ngModel)]="asUser.preferredLanguage.kannada">
+                    <label for="kannada">Kannada</label>
+                </div>
 
-                <input type="checkbox" id="tamil" name="tamil" [(ngModel)]="asUser.preferredLanguage.tamil">
-                <label for="tamil">Tamil</label>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="tamil" name="tamil" [(ngModel)]="asUser.preferredLanguage.tamil">
+                    <label for="tamil">Tamil</label>
+                </div>
             </div>
         </div>
 
@@ -99,13 +110,15 @@
             </div>
         </div>
 
-        <input type="checkbox" id="agree" name="agree" [(ngModel)]="userInput.agreeToTerms" required>
+        <div class="terms-container">
+        <input type="checkbox" id="agree" name="agree" [(ngModel)]="userInput.agreeToTerms" >
         <label for="agree">I agree to the terms and conditions</label>
+        </div>
 
         <div class="buttons">
-            <button type="submit">Submit</button>
-            <button type="reset">Reset</button>
-            <button type="button" disabled>Edit</button>
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+            <input type="button" value="Edit" disabled />
         </div>
     </form>
 </div>
