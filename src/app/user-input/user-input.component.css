@@ -65,7 +65,7 @@
     margin-top: 2rem;
 }
 
-#user-input input[type="submit"], #user-input input[type="reset"] {
+#user-input .buttons input {
     padding: 0.7rem 1.7rem;
     background-color: #243b7b;
     color: #ffffff;
@@ -81,12 +81,10 @@
 }
 
 #user-input input:disabled {
-    background-color: #ccc;
-    color: #666;
-    cursor: not-allowed;
-    padding: 0.7rem 1.7rem;
-    border-radius: 4px;
-    border: none;
+    background-color: #ccc !important;
+    color: #666 !important;
+    cursor: not-allowed !important;
+    padding: 0.7rem 1.7rem !important;
 }
 
 #user-input fieldset {
@@ -146,14 +144,4 @@
 .container{
     display: flex;
     gap: 1rem;
-}
-
-@media (max-width: 768px) {
-    #user-input {
-        padding: 1rem;
-    }
-
-    #user-input button {
-        width: 100%;
-    }
 }

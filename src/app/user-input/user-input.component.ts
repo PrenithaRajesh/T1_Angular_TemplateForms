@@ -1,4 +1,10 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { User, Admin, UserOrAdmin } from '../user-input.model';
 import { UserService } from '../user.service';
 
@@ -12,7 +18,9 @@ export class UserInputComponent implements OnInit, OnChanges {
 
   userInput!: UserOrAdmin;
 
-  formLogs : {
+  isEditUser = false;
+
+  formLogs: {
     condition: boolean;
     message: string;
   }[] = [];
@@ -29,9 +37,10 @@ export class UserInputComponent implements OnInit, OnChanges {
 
     // Subscribe to the selectedUser observable to pre-populate the form
     this.userService.selectedUser.subscribe((user: UserOrAdmin) => {
-      if(!user) return;
-      if(user.type === this.selectedForm) this.userInput = { ...user }; 
-       else {
+      this.isEditUser = !!user;
+      if (!user) return;
+      if (user.type === this.selectedForm) this.userInput = { ...user };
+      else {
         this.selectedForm = user.type;
         this.userInput = { ...user };
       }
@@ -45,6 +54,7 @@ export class UserInputComponent implements OnInit, OnChanges {
   }
 
   private initializeForm(): void {
+    this.isEditUser = false;
     if (this.selectedForm === 'user') {
       this.userInput = {
         id: '',
@@ -96,19 +106,24 @@ export class UserInputComponent implements OnInit, OnChanges {
     }
   }
 
-  get asUser(){
+  get asUser() {
     return this.userInput as User;
   }
 
-  get asAdmin(){
+  get asAdmin() {
     return this.userInput as Admin;
   }
 
   onSubmit(): void {
     this.formLogs = this.userService.validateUser(this.userInput);
     if (this.formLogs.length === 0) {
+      if (this.isEditUser) {
+        this.userService.updateUser(this.userInput);
+        alert(this.userInput.type + ' updated successfully');
+        return;
+      }
       this.userService.createUser(this.userInput);
-      alert(this.userInput.type+' created successfully');
+      alert(this.userInput.type + ' created successfully');
     } else {
       console.log('Form validation failed');
       console.log(this.formLogs);
