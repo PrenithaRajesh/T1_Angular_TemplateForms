@@ -40,7 +40,7 @@ export class UserService {
   }
 
   readUser() {
-    return this.users.value;
+    return this.users;
   }
 
   updateUser(user: UserOrAdmin) {

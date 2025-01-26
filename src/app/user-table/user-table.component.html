@@ -5,6 +5,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Type</th>
+            <!-- <th></th> -->
         </thead>
         <tbody>
             <tr *ngFor="let user of users" (click)="onSelectRow(user)">
@@ -12,6 +13,7 @@
                 <td>{{user.name}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.type}}</td>
+                <td><button (click)="onDeleteRow(user, $event)">Delete</button></td>
             </tr>
         </tbody>
     </table>
