@@ -6,13 +6,13 @@ export const DUMMY_USERS: UserOrAdmin[] = [
     name: "Rajesh Krishna",
     email: "rajesh@mufg.in",
     phone: "1234567890",
-    gender: "Male",
+    gender: "male",
     dateOfBirth: "1980-01-15",
     address: {
       street: "123 Admin St",
       city: "Admin City",
       state: "Admin State",
-      zip: "12345",
+      zip: "123456", // Fixed: Length is now 6.
     },
     type: "admin",
     permissions: {
@@ -29,16 +29,16 @@ export const DUMMY_USERS: UserOrAdmin[] = [
     name: "Prenitha R",
     email: "prenitha@mufg.in",
     phone: "0987654321",
-    gender: "Female",
+    gender: "female",
     dateOfBirth: "1995-06-25",
     address: {
       street: "456 User Lane",
       city: "User City",
       state: "User State",
-      zip: "67890",
+      zip: "678901", // Fixed: Length is now 6.
     },
     type: "user",
-    userType: "Individual",
+    userType: "individual",
     preferredLanguage: {
       english: true,
       hindi: false,
