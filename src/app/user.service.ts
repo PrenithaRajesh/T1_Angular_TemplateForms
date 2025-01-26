@@ -17,7 +17,7 @@ import {
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  users = new BehaviorSubject<UserOrAdmin[]>(DUMMY_USERS);
+  users = new BehaviorSubject<UserOrAdmin[]>(localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users') || '') : DUMMY_USERS);
 
   selectedUserType = new BehaviorSubject<'user' | 'admin'>('user');
 
@@ -37,6 +37,7 @@ export class UserService {
   createUser(user: UserOrAdmin) {
     const currentUsers = this.users.value;
     this.users.next([...currentUsers, user]);
+    localStorage.setItem('users', JSON.stringify(this.users.value));
   }
 
   readUser() {
@@ -51,12 +52,15 @@ export class UserService {
       currentUsers[userIndex] = user; 
       this.users.next([...currentUsers]); 
     }
+    
+    localStorage.setItem('users', JSON.stringify(this.users.value));
   }
 
   deleteUser(user: UserOrAdmin) {
     const currentUsers = this.users.value;
     const updatedUsers = currentUsers.filter((u) => u.id !== user.id);
     this.users.next(updatedUsers); 
+    localStorage.setItem('users', JSON.stringify(this.users.value));
   }
 
   validateUser(user: UserOrAdmin): { condition: boolean; message: string }[] {
