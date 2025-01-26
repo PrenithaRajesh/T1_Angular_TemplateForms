@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { UserTableComponent } from './user-table/user-table.component';
@@ -18,7 +17,6 @@ import { UserInputModule } from './user-input/user-input.module'
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     UserInputModule,
   ],
   providers: [],

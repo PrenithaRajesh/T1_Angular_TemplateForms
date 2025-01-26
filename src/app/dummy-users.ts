@@ -12,7 +12,7 @@ export const DUMMY_USERS: UserOrAdmin[] = [
       street: "123 Admin St",
       city: "Admin City",
       state: "Admin State",
-      zip: "123456", // Fixed: Length is now 6.
+      zip: "123456", 
     },
     type: "admin",
     permissions: {
@@ -35,7 +35,7 @@ export const DUMMY_USERS: UserOrAdmin[] = [
       street: "456 User Lane",
       city: "User City",
       state: "User State",
-      zip: "678901", // Fixed: Length is now 6.
+      zip: "678901", 
     },
     type: "user",
     userType: "individual",
