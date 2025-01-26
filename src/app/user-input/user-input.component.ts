@@ -8,7 +8,7 @@ import { UserService } from '../user.service';
   styleUrls: ['./user-input.component.css'],
 })
 export class UserInputComponent implements OnInit, OnChanges {
-  @Input() selectedForm: string = 'user'; 
+  @Input() selectedForm!: 'user' | 'admin';
 
   userInput!: UserOrAdmin;
 
@@ -21,6 +21,21 @@ export class UserInputComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.initializeForm();
+
+    this.userService.selectedUserType.subscribe((type: 'user' | 'admin') => {
+      this.selectedForm = type;
+      this.initializeForm();
+    });
+
+    // Subscribe to the selectedUser observable to pre-populate the form
+    this.userService.selectedUser.subscribe((user: UserOrAdmin) => {
+      if(!user) return;
+      if(user.type === this.selectedForm) this.userInput = { ...user }; 
+       else {
+        this.selectedForm = user.type;
+        this.userInput = { ...user };
+      }
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -44,7 +59,6 @@ export class UserInputComponent implements OnInit, OnChanges {
           state: '',
           zip: '',
         },
-        modifiedAt: '',
         type: 'user',
         userType: '',
         preferredLanguage: {
@@ -69,7 +83,6 @@ export class UserInputComponent implements OnInit, OnChanges {
           state: '',
           zip: '',
         },
-        modifiedAt: '',
         type: 'admin',
         permissions: {
           read: false,

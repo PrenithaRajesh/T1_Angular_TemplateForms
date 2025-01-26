@@ -14,7 +14,6 @@ export const DUMMY_USERS: UserOrAdmin[] = [
       state: "Admin State",
       zip: "12345",
     },
-    modifiedAt: new Date().toISOString(),
     type: "admin",
     permissions: {
       read: true,
@@ -38,7 +37,6 @@ export const DUMMY_USERS: UserOrAdmin[] = [
       state: "User State",
       zip: "67890",
     },
-    modifiedAt: new Date().toISOString(),
     type: "user",
     userType: "Individual",
     preferredLanguage: {

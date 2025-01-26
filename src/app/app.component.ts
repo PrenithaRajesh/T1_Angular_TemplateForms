@@ -9,7 +9,7 @@ import { UserService } from './user.service';
 export class AppComponent {
   constructor(private userService: UserService) {}
 
-  get selectedUser(){
-    return this.userService.selectedUser;
+  get selectedUserType(){
+    return this.userService.selectedUserType;
   }
 }

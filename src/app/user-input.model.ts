@@ -11,7 +11,6 @@ export type BaseUser = {
         state: string;
         zip: string;
     };
-    modifiedAt: string;
     agreeToTerms: boolean;
 };
 

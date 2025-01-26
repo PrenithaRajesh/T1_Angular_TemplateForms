@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { DUMMY_USERS } from './dummy-users';
 import { User, UserOrAdmin } from './user-input.model';
 
@@ -18,7 +19,20 @@ import {
 export class UserService {
   users: UserOrAdmin[] = DUMMY_USERS;
 
-  selectedUser: 'user' | 'admin' = 'user';
+  selectedUserType = new BehaviorSubject<'user' | 'admin'>('user');
+
+  selectedUser = new Subject<UserOrAdmin>();
+
+  constructor() {
+    // Automatically update selectedUserType when selectedUser changes
+    this.selectedUser.subscribe((user) => {
+      if ('userType' in user) {
+        this.selectedUserType.next('user');
+      } else {
+        this.selectedUserType.next('admin');
+      }
+    });
+  }
 
   createUser(user: UserOrAdmin) {
     this.users.push(user);
@@ -38,10 +52,10 @@ export class UserService {
 
   validateUser(user: UserOrAdmin): {condition: boolean; message: string;}[] {
     var flag = true;
-
     var returnArray: {condition: boolean; message: string;}[] = [];
 
-    if (this.selectedUser === 'user') {
+    const selectedType = this.selectedUserType.value;
+    if (selectedType === 'user') {
       if (!isValidUserId(user.id)) {
         flag = false;
         returnArray.push( {
@@ -105,7 +119,7 @@ export class UserService {
           message: 'Please agree to terms',
         });
       }
-    } else if (this.selectedUser === 'admin') {
+    } else if (selectedType === 'admin') {
       if (!isValidAdminId(user.id)) {
         flag = false;
         returnArray.push( {
